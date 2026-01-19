@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 
 // Stardew Valley-inspired room avatars (emoji-based for simplicity, thematically cozy)
 const ROOM_AVATARS = [
@@ -2534,6 +2535,7 @@ export default function BreakRoom() {
       <HelpModal isOpen={showHelp} onClose={() => setShowHelp(false)} />
       <ContactModal isOpen={showContact} onClose={() => setShowContact(false)} />
       <StatsModal isOpen={showStats} onClose={() => setShowStats(false)} rooms={rooms} profile={profile} />
+      <Analytics />
     </div>
   );
 }
