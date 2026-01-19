@@ -984,7 +984,7 @@ const TagFilterModal = ({ isOpen, onClose, tags, selectedTags, onToggleTag, onAd
     <Modal isOpen={isOpen} onClose={onClose} title="Filter by Tags 🏷️">
       <div className="space-y-4">
         <p className="text-slate-400 text-sm">
-          Select tags to filter your break rooms. Create new tags here, then assign them to rooms.
+          Select tags to filter your rooms. Create new tags here, then assign them to rooms.
         </p>
         
         {/* Add new tag */}
@@ -1493,10 +1493,10 @@ const Input = ({ label, ...props }) => (
 
 // Help Modal
 const HelpModal = ({ isOpen, onClose }) => (
-  <Modal isOpen={isOpen} onClose={onClose} title="Welcome to Break Room ☕" wide>
+  <Modal isOpen={isOpen} onClose={onClose} title="Welcome to Who's Awake? ☕" wide>
     <div className="space-y-6">
       <p className="text-slate-300">
-        Break Room helps you keep track of when your people are available across time zones. 
+        Who's Awake? helps you keep track of when your people are available across time zones. 
         No more mental math, no more accidentally pinging someone at 3am.
       </p>
       
@@ -1504,7 +1504,7 @@ const HelpModal = ({ isOpen, onClose }) => (
         <h3 className="text-white font-semibold mb-3">How it works</h3>
         <ol className="list-decimal list-inside space-y-2 text-slate-400">
           <li>Set up your profile with your name and location</li>
-          <li>Create break rooms for different groups</li>
+          <li>Create rooms for different groups</li>
           <li>Add members with their locations and availability windows</li>
           <li>Check in anytime to see who's around</li>
         </ol>
@@ -1634,7 +1634,7 @@ const StatsModal = ({ isOpen, onClose, rooms, profile }) => {
       <div className="space-y-6">
         {rooms.length === 0 ? (
           <p className="text-slate-400 text-center py-8">
-            Create some break rooms and add members to see your stats!
+            Create some rooms and add members to see your stats!
           </p>
         ) : (
           <>
@@ -1642,7 +1642,7 @@ const StatsModal = ({ isOpen, onClose, rooms, profile }) => {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div className="bg-slate-700/30 rounded-xl p-4 text-center">
                 <div className="text-3xl font-bold text-amber-400">{rooms.length}</div>
-                <div className="text-slate-400 text-sm">Break Rooms</div>
+                <div className="text-slate-400 text-sm">Rooms</div>
               </div>
               <div className="bg-slate-700/30 rounded-xl p-4 text-center">
                 <div className="text-3xl font-bold text-teal-400">{uniqueMembersByName.length}</div>
@@ -1763,10 +1763,10 @@ const ProfileSetupModal = ({ isOpen, onSave }) => {
   };
   
   return (
-    <Modal isOpen={isOpen} onClose={() => {}} title="Welcome to Break Room ☕">
+    <Modal isOpen={isOpen} onClose={() => {}} title="Welcome to Who's Awake? ☕">
       <p className="text-slate-400 mb-6">
-        Let's set up your profile. You'll be automatically added to any break room you create, 
-        and can customize your availability for each room.
+        Let's set up your profile. You'll be automatically added to any room you create, 
+        and can customize your availability for each one.
       </p>
       
       <Input
@@ -1812,7 +1812,7 @@ const CreateRoomModal = ({ isOpen, onClose, onCreate }) => {
   };
   
   return (
-    <Modal isOpen={isOpen} onClose={onClose} title="Create Break Room">
+    <Modal isOpen={isOpen} onClose={onClose} title="Create Room">
       <Input
         label="Room Name"
         placeholder="e.g., Design Team, Family, Project Alpha..."
@@ -2026,7 +2026,7 @@ const EmptyState = ({ icon, title, subtitle, action }) => (
 // Buy Me a Coffee Button
 const BuyMeCoffee = () => (
   <a
-    href="https://buymeacoffee.com/whoawake"
+    href="https://buymeacoffee.com/emoauro"
     target="_blank"
     rel="noopener noreferrer"
     className="inline-flex items-center gap-2 px-4 py-2 bg-amber-500/10 border border-amber-500/30 
@@ -2051,10 +2051,10 @@ const Header = ({ profile, onEditProfile, onHelp, onContact, onStats, onFilter, 
   <div className="flex items-center justify-between mb-8">
     <div>
       <h1 className="text-4xl font-bold text-white mb-2">
-        Break Room
+        Who's Awake?
         <span className="ml-3 text-3xl">☕</span>
       </h1>
-      <p className="text-slate-400">Check in on your teams across time zones</p>
+      <p className="text-slate-400">See who's around across time zones</p>
     </div>
     <div className="flex items-center gap-3">
       {profile && (
@@ -2299,15 +2299,15 @@ export default function BreakRoom() {
           {rooms.length === 0 ? (
             <EmptyState
               icon="🌍"
-              title="No break rooms yet"
-              subtitle="Create your first break room to start tracking your distributed team's availability."
+              title="No rooms yet"
+              subtitle="Create your first room to start tracking availability across time zones."
               action={
                 <button
                   onClick={() => setShowCreateRoom(true)}
                   className="px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 
                     text-white font-semibold hover:from-amber-400 hover:to-orange-400 transition-all"
                 >
-                  Create Break Room
+                  Create Room
                 </button>
               }
             />
@@ -2333,7 +2333,7 @@ export default function BreakRoom() {
                 className="w-full p-4 rounded-2xl border-2 border-dashed border-slate-700 
                   text-slate-500 hover:border-slate-600 hover:text-slate-400 transition-colors"
               >
-                + Create Break Room
+                + Create Room
               </button>
             </>
           )}
@@ -2468,7 +2468,7 @@ export default function BreakRoom() {
         {currentRoom.members.length === 0 ? (
           <EmptyState
             icon="🌙"
-            title="This break room is quiet..."
+            title="This room is quiet..."
             subtitle="Add team members to see who's around and when."
             action={
               <button
