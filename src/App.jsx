@@ -2046,59 +2046,63 @@ const Footer = () => (
   </footer>
 );
 
-// Header component
+// Header component - mobile responsive
 const Header = ({ profile, onEditProfile, onHelp, onContact, onStats, onFilter, hasActiveFilters }) => (
-  <div className="flex items-center justify-between mb-8">
+  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8 gap-4">
     <div>
-      <h1 className="text-4xl font-bold text-white mb-2">
+      <h1 className="text-3xl sm:text-4xl font-bold text-white mb-1 sm:mb-2">
         Who's Awake?
-        <span className="ml-3 text-3xl">☕</span>
+        <span className="ml-2 sm:ml-3 text-2xl sm:text-3xl">☕</span>
       </h1>
-      <p className="text-slate-400">See who's around across time zones</p>
+      <p className="text-slate-400 text-sm sm:text-base">See who's around across time zones</p>
     </div>
-    <div className="flex items-center gap-3">
+    <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
       {profile && (
         <button
           onClick={onEditProfile}
-          className="flex items-center gap-2 px-3 py-2 bg-slate-800 border border-slate-700 
+          className="flex items-center gap-2 px-2 sm:px-3 py-2 bg-slate-800 border border-slate-700 
             rounded-xl hover:border-slate-600 transition-colors"
         >
           <Avatar name={profile.name} status={getMemberStatus(profile)} size="sm" />
-          <span className="text-slate-300 text-sm">{profile.name}</span>
+          <span className="text-slate-300 text-sm hidden sm:inline">{profile.name}</span>
         </button>
       )}
       <button
         onClick={onHelp}
-        className="px-3 py-2 rounded-xl bg-slate-800 border border-slate-700 text-slate-400 
+        className="px-2 sm:px-3 py-2 rounded-xl bg-slate-800 border border-slate-700 text-slate-400 
           hover:text-white hover:border-slate-600 transition-colors text-sm flex items-center gap-1.5"
+        title="Help"
       >
-        <span>Help</span>
+        <span className="hidden sm:inline">Help</span>
         <span>❓</span>
       </button>
       <button
         onClick={onFilter}
-        className={`px-3 py-2 rounded-xl bg-slate-800 border text-sm flex items-center gap-1.5 transition-colors
+        className={`px-2 sm:px-3 py-2 rounded-xl bg-slate-800 border text-sm flex items-center gap-1.5 transition-colors
           ${hasActiveFilters 
             ? 'border-amber-500/50 text-amber-400 hover:border-amber-500' 
             : 'border-slate-700 text-slate-400 hover:text-white hover:border-slate-600'}`}
+        title="Filter"
       >
-        <span>Filter</span>
+        <span className="hidden sm:inline">Filter</span>
         <span>⚙️</span>
       </button>
       <button
         onClick={onStats}
-        className="px-3 py-2 rounded-xl bg-slate-800 border border-slate-700 text-slate-400 
+        className="px-2 sm:px-3 py-2 rounded-xl bg-slate-800 border border-slate-700 text-slate-400 
           hover:text-white hover:border-slate-600 transition-colors text-sm flex items-center gap-1.5"
+        title="Stats"
       >
-        <span>Stats</span>
+        <span className="hidden sm:inline">Stats</span>
         <span>📊</span>
       </button>
       <button
         onClick={onContact}
-        className="px-3 py-2 rounded-xl bg-slate-800 border border-slate-700 text-slate-400 
+        className="px-2 sm:px-3 py-2 rounded-xl bg-slate-800 border border-slate-700 text-slate-400 
           hover:text-white hover:border-slate-600 transition-colors text-sm flex items-center gap-1.5"
+        title="Contact"
       >
-        <span>Contact</span>
+        <span className="hidden sm:inline">Contact</span>
         <span>💌</span>
       </button>
     </div>
@@ -2267,7 +2271,7 @@ export default function BreakRoom() {
   if (!currentRoomId) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-900 to-slate-800 pb-20">
-        <div className="max-w-4xl mx-auto p-8">
+        <div className="max-w-4xl mx-auto p-4 sm:p-8">
           <Header 
             profile={profile} 
             onEditProfile={handleEditProfileFromHeader}
@@ -2392,56 +2396,59 @@ export default function BreakRoom() {
   
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-900 to-slate-800 pb-20">
-      <div className="max-w-4xl mx-auto p-8">
+      <div className="max-w-4xl mx-auto p-4 sm:p-8">
         <header className="mb-8">
           <div className="flex items-center justify-between mb-4">
             <button
               onClick={() => setCurrentRoomId(null)}
-              className="text-slate-400 hover:text-white transition-colors flex items-center gap-2"
+              className="text-slate-400 hover:text-white transition-colors flex items-center gap-2 text-sm sm:text-base"
             >
-              ← Back to rooms
+              ← Back
             </button>
             <div className="flex items-center gap-2">
               <button
                 onClick={() => setShowHelp(true)}
-                className="px-3 py-2 rounded-xl bg-slate-800 border border-slate-700 text-slate-400 
+                className="px-2 sm:px-3 py-2 rounded-xl bg-slate-800 border border-slate-700 text-slate-400 
                   hover:text-white hover:border-slate-600 transition-colors text-sm flex items-center gap-1.5"
+                title="Help"
               >
-                <span>Help</span>
+                <span className="hidden sm:inline">Help</span>
                 <span>❓</span>
               </button>
               <button
                 onClick={() => setShowStats(true)}
-                className="px-3 py-2 rounded-xl bg-slate-800 border border-slate-700 text-slate-400 
+                className="px-2 sm:px-3 py-2 rounded-xl bg-slate-800 border border-slate-700 text-slate-400 
                   hover:text-white hover:border-slate-600 transition-colors text-sm flex items-center gap-1.5"
+                title="Stats"
               >
-                <span>Stats</span>
+                <span className="hidden sm:inline">Stats</span>
                 <span>📊</span>
               </button>
               <button
                 onClick={() => setShowContact(true)}
-                className="px-3 py-2 rounded-xl bg-slate-800 border border-slate-700 text-slate-400 
+                className="px-2 sm:px-3 py-2 rounded-xl bg-slate-800 border border-slate-700 text-slate-400 
                   hover:text-white hover:border-slate-600 transition-colors text-sm flex items-center gap-1.5"
+                title="Contact"
               >
-                <span>Contact</span>
+                <span className="hidden sm:inline">Contact</span>
                 <span>💌</span>
               </button>
             </div>
           </div>
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="flex items-center gap-3 sm:gap-4">
               <button 
                 onClick={() => setShowAvatarPicker(currentRoom.id)}
-                className="w-16 h-16 rounded-2xl bg-slate-700/50 border border-slate-600 
-                  flex items-center justify-center text-3xl hover:bg-slate-600/50 
+                className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-slate-700/50 border border-slate-600 
+                  flex items-center justify-center text-2xl sm:text-3xl hover:bg-slate-600/50 
                   hover:border-slate-500 transition-all shrink-0"
                 title="Change icon"
               >
                 {roomAvatar.emoji}
               </button>
               <div>
-                <h1 className="text-3xl font-bold text-white mb-1">{currentRoom.name}</h1>
-                <p className="text-slate-400 mb-2">
+                <h1 className="text-xl sm:text-3xl font-bold text-white mb-1">{currentRoom.name}</h1>
+                <p className="text-slate-400 text-sm sm:text-base mb-2">
                   {getAvailableCount(currentRoom.members)} of {currentRoom.members.length} available now
                 </p>
                 <RoomTagsEditor
